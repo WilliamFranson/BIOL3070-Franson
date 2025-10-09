@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 # ABSTRACT
 
-Fill in abstract... Write this last, after finishing methods, results, and discussion. Summarize the overall study question, approach, results, and conclusion in a short paragraph.
+As West Nile Virus (WNV) becomes more prevalent in the Western United States, better understanding of how it spreads is vital to ensure public health. Humans contract WNV from mosquitoes which have previously bitten an infected bird. Whether certain birds are more likely to serve as a reservoir species is unknown, although we suspect that the House Finch (*Haemorhous mexicanus*) is likely to serve as a reservoir. We tested this by collecting mosquitoes who have fed on a host and analyzed the relationship between makeup of host species and presence of WNV at a location. We found the presence of House Finches was a indicator of WNV presence in an area.
 
 # BACKGROUND
 
