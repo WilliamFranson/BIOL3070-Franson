@@ -12,20 +12,15 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 # ABSTRACT
 
-As West Nile Virus (WNV) becomes more prevalent in the Western United States, better understanding of how it spreads is vital to ensure public health. Humans contract WNV from mosquitoes which have previously bitten an infected bird. Whether certain birds are more likely to serve as a reservoir species is unknown, although we suspect that the House Finch (*Haemorhous mexicanus*) is likely to serve as a reservoir. We tested this by collecting mosquitoes who have fed on a host and analyzed the relationship between makeup of host species and presence of WNV at a location. We found the presence of House Finches was a indicator of WNV presence in an area.
+As West Nile Virus (WNV) becomes more prevalent in the Western United States, better understanding of how it spreads is vital to ensure public health. Humans contract WNV from mosquitoes which have previously bitten an infected bird. Whether certain birds are more likely to serve as a reservoir species is unknown, although we suspect that the House Finch (*Haemorhous mexicanus*) is likely to serve as a reservoir. We tested this by collecting mosquitoes who have fed on a host and analyzed the relationship between makeup of host species and presence of WNV at a location. We found the presence of House Finches was a indicator of WNV presence in an area based on the analyzes performed on captured mosquitoes bloodmeals.
 
 # BACKGROUND
 
-West Nile Virus (WNV) is a disease that is transmitted from birds by mosquito bites. After biting an infected bird a mosquito may bite another animal and transmit the disease to them. Some species such as humans and horses can become infected, however they won't be able to spread WNV *(explain why humans and horses don't transmit (I don't think we've talked about horses but this is something I know from previous  working w/ them I'll find a source later))*. In the case of crows most individuals die to quickly to be bitten a second time and spread. Some species, such as the house finch, have enough viruses in their blood (viremia) to transmit the disease for many days without experiencing severe symptoms *(this is probaly where I should cite Komar but I haven't read it yet :P, may have to edit some prevous info)*.
+West Nile Virus (WNV) is a disease that is transmitted from birds by mosquito bites. After biting an infected bird a mosquito may bite another animal and transmit the disease to them. Some species such as humans and horses can become infected, however they won't be able to spread WNV, to transit the disease a high amount of virions must be present in the blood (viremia) before a mosquito bites. Humans don't reach a high enough viremia level to spread the disease. Some species however, such as the house finch, have enough virions in their blood to transmit the disease for many days without experiencing severe symptoms, and since they often survive the infections, an outbreak is not immediately obvious (Komar et al. (2003)).
   
 Since these finches are capable of storing the disease for a time (fig. 1) while it is transferred to other individuals they are referred to as a reservoir population. Without a reservoir population of birds the disease can't be transmitted to humans so better understanding the food sources of mosquitoes in an area and whether they are capable of being a reservoir allows us to better understand the possibility of a mosquito being a vector for WNV. If a species is capable of serving as a reservoir and mosquitoes do feed on them regularly we would expect to see areas where they make up a high host percentage to correlate to the presence of WNV in an area.
   
 Since mosquitoes carry the blood of their host, collecting blood smears of mosquitoes provides an easy method of determining typical hosts. By extracting identifying the DNA present in the collected blood we are able to determine which host a mosquito previously feed on before being trapped. We do this by first collecting the blood from a female, as males don't feed on blood, which has already feed. We then extract the DNA for analysis, however sequencing requires more DNA than is present in a single blood smear. To fix this all samples undergo a Polymerase Chain Reaction (PCR), a technique in which DNA samples are heated to cause the strands to separate and then primers and polymerase are allowed to replicate the DNA strands before being heated again to repeate the process. This allows for a rapid increase in amount of genetic material available for sequencing. Once sequenced the sequence is compared to a massive database containing the sequences of thousands of different species to find which species best matches the sample sequence. The best match being the species from which the blood originates and the original host for the captured mosquito.
-
-
-Example: You might cite Komar et al. (2003) showing viremia duration in birds, which explains why house finches could act as amplifying hosts. Connect this to the prediction that locations with more house finch blood meals should also show higher rates of WNV-positive mosquito pools.
-
-NOTE: Examples of data you can plot for the background info at https://github.com/saarman/BIOL3070/
 
 ```{r viremia, include=TRUE, eval=TRUE, warning=FALSE, fig.align='left', fig.width=4.75, fig.height=7}
 # Manually transcribe duration (mean, lo, hi) from the last table column
@@ -194,20 +189,19 @@ summary(glm2)
 
 # DISCUSSION
 ## Interpretation of 1st analysis (e.g. barplots)
-
-In the bar chart a clear difference can be seen in house finch numbers based on whether WNV is present in an area with positive locations having over 3x the number of House Finches found in bloodsmear tests.
+In the bar chart a clear difference can be seen in house finch numbers based on whether WNV is present with positive areas having over 3x the number of House Finches found in bloodsmear tests. Meanwhile other common backyard birds such as house sparrows, robins, doves, and starlings have similar presences in both WNV+ and WNV- areas. This indicates that it is not the presence of birds in general but specifically House Finches that matters.
 
 ## Interpretation of 2nd analysis (e.g. generalized linear model)
-The statistical analysis supports this observation. With the P values for House Finch positivity rates being P=0.0287 for the binomial analysis and P=4.54E-05 for the numeric analysis
+The statistical analysis supports this observation. With positive slopes being found for the association of House Finches and WNV rates. It was a strong predictor for whether WNV was present (slope= 0.3468, p= 0.0287). The correlation was weaker however when it came to predicting rates of WNV in an area although the finding was still statistically significant (slope= 0.02748, P= 4.54E-05).
 
 
 # CONCLUSION
+Based off of the fact that both analyzes support the idea that the presence of House Finches is a reliable indicator for WNV, there is evidence to say that House Finches do act as an amplifying species. Based of the higher number of House Finches found at WNV+ sites in figure 2, and based of the small but still significant correlation in WNV rates. The low source of correlation could be due to the fact that WNV rates can only rise so high, since at a certain point enough individuals will have already contracted the disease and fail to pass it on.
 
-Fill in here... State the overall answer to your research question, based on all analyses. Mention whether the evidence supports your hypothesis and what it suggests about WNV amplification in Salt Lake City.
+Other potential sources of error could be in uncontrolled factors across the sample sites that were not accounted for ie. presence of predators or proximity to habitats with large bird populations. Accounting for all uncontrolled variable would be extremely difficult however and until evidence to support alternative hypothesis is found, the presence of potential host species remains the best explanation.
+
 
 # REFERENCES     
-Fill in here... List all sources you cited in your background and throughout the report. Use a consistent style.a conclusion you can draw from your analysis.
-
 1. Komar N, Langevin S, Hinten S, Nemeth N, Edwards E, Hettler D, Davis B, Bowen R, Bunning M. Experimental infection of North American birds with the New York 1999 strain of West Nile virus. Emerg Infect Dis. 2003 Mar;9(3):311-22. https://doi.org/10.3201/eid0903.020628
 
 2. ChatGPT. OpenAI, version Jan 2025. Used as a reference for functions such as plot() and to correct syntax errors. Accessed `r Sys.Date()`.
