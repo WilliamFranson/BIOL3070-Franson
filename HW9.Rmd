@@ -1,0 +1,48 @@
+---
+title: "HW9"
+author: "William Franson"
+date: "2025-10-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Loading the data
+
+```{r loading data}
+
+# load data
+life_expectancy <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2023/2023-12-05/life_expectancy.csv')
+```
+
+## (Optional) Sneak Peak For Lecture
+
+```{r optional}
+# Scatterplot with line of best fit
+plot(life_expectancy$Year[life_expectancy$Year > 1883],life_expectancy$LifeExpectancy[life_expectancy$Year > 1883], pch = 19, col = "grey", xlab = "Year of Birth", ylab = "Life Expectancy")
+abline(lm(LifeExpectancy ~ Year, data = life_expectancy[life_expectancy$Year > 1883,]), lt = 1)
+```
+
+# Linear regression: Before 1883, after 1883
+
+In 1883, Koch identified and isolated the *Vibrio cholerae* bacterium in pure culture, a discovery previously made by Filippo Pacini in 1854 but not widely recognized. Koch's findings provided the definitive scientific proof needed to firmly establish the germ theory for cholera and many other diseases and was the beginning of the modern medical era.
+
+```{r regression}
+# Linear regression years before 1883 (Koch's germ theory)
+lm_b1883 <- lm(LifeExpectancy ~ Year, data = life_expectancy[life_expectancy$Year < 1883,])
+summary(lm_b1883)
+
+# Linear regression years after 1883 (Koch's germ theory)
+lm_a1883 <- lm(LifeExpectancy ~ Year, data = life_expectancy[life_expectancy$Year > 1883,])
+summary(lm_a1883)
+```
+
+# Scatterplot with line(s) of best fit
+
+```{r scatterplot}
+plot(life_expectancy$Year,life_expectancy$LifeExpectancy, pch = 19, col = "grey", xlab = "Year of Birth", ylab = "Life Expectancy")
+abline(lm_b1883, lt = 3)
+abline(lm_a1883, lt = 1)
+```
