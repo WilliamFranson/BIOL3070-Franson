@@ -1,35 +1,29 @@
----
-title: "Indepentent RMarkdown Portfolio -- Affects of TP53 Mutations on Rates of Breast Cancer"
-author: "William Franson"
-date: "`r Sys.Date()`"
-output:
-  github_document:
-    toc: true
----
+#wipe and rebuild your user library:
+unlink("/cloud/home/r1630953/Rlibs", recursive = TRUE, force = TRUE)
+dir.create("/cloud/home/r1630953/Rlibs", recursive = TRUE)
+.libPaths("/cloud/home/r1630953/Rlibs")
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-# ABSTRACT
+#Reinstall BiocManager:
+install.packages("BiocManager")
 
+#Set Bioconductor to 3.18:
+BiocManager::install(version="3.18", update=FALSE, ask = FALSE)
 
-# BACKGROUND
-An estimated 600,000 Americans are expected to die of various cancers in 2025 and is one of the leading causes of death in the United States (American Cancer Society 2025) By better understanding the causes of cancers we can prevent the arduous treatment processes and thousands of deaths a year. Biologically cancer is caused by the rapid and uncontrolled growth of cells in the human body and is caused by a failure of various regulatory stages in the cell division cycle. These failures are often caused by genetic mutations that cause over or under expression of regulatory proteins that play important rolls in the cell cycle. One highly notable important protein is the tumor suppressor protein 53 (TP53) which codes for cell repair and apoptosis (Surget 2013). For the purposes of this study we will be analyzing the protein CD24, a protein that functions in cell adhesion, via the GSE15852 data set.
- 
-# STUDY QUESTION and HYPOTHESIS
+#Install GEOquery:
+BiocManager::install("GEOquery", update=FALSE, ask = FALSE)
+library(GEOquery)
 
-## Questions  
-Whether expression rates of CD24 are linked to rates of breast cancer.
-## Hypothesis 
-That the expression rates of CD24 can be used to predict whether breast cancer.
-## Prediction
-Overexpression of KRT19 will be linked to higher rates of breast cancer.
-# METHODS/GRAPHS/RESULTS
+#Install limma:
+BiocManager::install("limma", update = FALSE, ask = FALSE)
+library(limma)
 
-```{r pressure, eval=TRUE}
+#Install umap:
+install.packages("umap")
+library(limma)
+
 # Version info: R 4.2.2, Biobase 2.58.0, GEOquery 2.66.0, limma 3.54.0
 ################################################################
-#   Data plots for selected GEO samples
+#   Differential expression analysis with limma
 library(GEOquery)
 library(limma)
 library(umap)
@@ -119,18 +113,4 @@ legend("bottomleft",
        col = c("red", "blue", "grey"),
        pch = 20,
        bty = "n")
-```
-
-# DISCUSSION
-
-# CONCLUSION
-
-# REFERENCES     
-
-1. ChatGPT. OpenAI, version Jan 2025. Used as a reference for functions such as plot() and to correct syntax errors. Accessed `r Sys.Date()`.
-
-2. Cancer facts & figures 2025. American Cancer Society. (n.d.). https://www.cancer.org/content/dam/cancer-org/research/cancer-facts-and-statistics/annual-cancer-facts-and-figures/2025/2025-cancer-facts-and-figures-acs.pdf
-
-3. Surget, S., Khoury, M. P., & Bourdon, J. C. (2013). Uncovering the role of p53 splice variants in human malignancy: a clinical perspective. OncoTargets and therapy, 7, 57–68. https://doi.org/10.2147/OTT.S53876
-
 
