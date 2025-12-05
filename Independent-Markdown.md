@@ -2,17 +2,31 @@ Indepentent RMarkdown Portfolio – Affects of TP53 Mutations on Rates of
 Breast Cancer
 ================
 William Franson
-2025-11-14
+2025-12-05
 
 - [ABSTRACT](#abstract)
 - [BACKGROUND](#background)
 - [STUDY QUESTION and HYPOTHESIS](#study-question-and-hypothesis)
-  - [Questions](#questions)
+  - [Question](#question)
+  - [Hypothesis](#hypothesis)
+  - [Prediction](#prediction)
+- [METHODS/GRAPHS/RESULTS](#methodsgraphsresults)
 - [DISCUSSION](#discussion)
 - [CONCLUSION](#conclusion)
 - [REFERENCES](#references)
 
 # ABSTRACT
+
+Cancer occurs when the division of a cell becomes uncontrolled in the
+human body leading to an overgrowth of nonfunctional tissue that saps
+the body of necessary resources. What causes the uncontrolled growth
+varies but is often a mutation in a gene that controls the cell cycle or
+closely related function such as cell adhesion or signaling. One such
+gene CD24 is thought to be a gene that when mutated can cause cancer in
+breast tissue. In this paper we looked at the GSE15852 data set to
+compare expression rates of CD24 in healthy and cancerous tissue. What
+we found was an increased rate in expression in cancerous tissues
+although not a perfect trend.
 
 # BACKGROUND
 
@@ -33,12 +47,32 @@ set.
 
 # STUDY QUESTION and HYPOTHESIS
 
-## Questions
+## Question
 
 Whether expression rates of CD24 are linked to rates of breast cancer.
-\## Hypothesis That the expression rates of CD24 can be used to predict
-whether breast cancer. \## Prediction Overexpression of KRT19 will be
-linked to higher rates of breast cancer. \# METHODS/GRAPHS/RESULTS
+
+## Hypothesis
+
+That the expression rates of CD24 can be used to predict whether breast
+cancer.
+
+## Prediction
+
+Over expression of CD24 will be linked to higher rates of breast cancer.
+
+# METHODS/GRAPHS/RESULTS
+
+We used the GSE15852 data set for the analysis. This is a set of data
+collected by Bong et al., 2009, in which they took samples from 43
+healthy breast tissue and 43 cancerous breast tissue and determined
+rates of expression for various genes including CD24 the gene we are
+looking at. The data was analysed via GEOquery functions in R studio.
+Samples were divided into control and cancer groups and charted based on
+their expression rates. A Bonferroni multiple test correction was
+utilized in order to account for any false positives in the data
+yielding a more accurate adjusted p-value. Another chart was generated
+that took the adjusted p-values for any given gene and plotted it
+against the log2 change in expression rates.
 
 ``` r
 # Version info: R 4.2.2, Biobase 2.58.0, GEOquery 2.66.0, limma 3.54.0
@@ -192,19 +226,54 @@ legend("bottomleft",
 
 ![](Independent-Markdown_files/figure-gfm/pressure-1.png)<!-- -->
 
+``` r
+knitr::include_graphics("CD24 Cancer v Control.png")
+```
+
+<img src="CD24 Cancer v Control.png" width="1476" />
+
 # DISCUSSION
+
+We predicted that as CD24 expression rates rose the tissue it was taken
+from would be more likely to be cancerous and that is supported by the
+data we looked at. In the second graph, the bar plot, we can see a clear
+difference between the levels of CD24 expression between the cancerous
+tissue on the left in the teal with higher bars and thus higher rates of
+expression when compared to the normal tissue on the right in the
+purple. The adjusted p-value for this graph was 1.05E-13 indicating a
+strong statistical significance. There is some variation however and
+multiple normal tissues have higher rates of CD24 expression than the
+lowest cancer tissues indicating that it is not a perfect predictor.
+This is corroborated by the first graph, the volcano plot, which
+displays the relationship between regulation and expression across many
+genes. As you can see it is not the case that all genes follow this
+trend of over expression = cancer and even among those that see an
+increase with a change in expression the change is not equal.
 
 # CONCLUSION
 
+The biology and genetics of cancer is a complicated topic that is
+affected by a wide variety of factors. The expression rates of certain
+genes is certainly an important one of these factors and can serve as a
+useful starting point for cancer research. Over-expression of CD24 is
+correlated to increased rates of breast cancer although it is not a
+perfect predictor.
+
 # REFERENCES
 
-1.  ChatGPT. OpenAI, version Jan 2025. Used as a reference for functions
-    such as plot() and to correct syntax errors. Accessed 2025-11-14.
+1.  Bong I, Ni P, Zakaria Z, Muhammad R, Abdullah N, Ibrahim N, Emran
+    NA, Abdullah NH & Hussain SN (2009). Expression data from human
+    breast tumors and their paired normal tissues \[Data set\]. NCBI
+    Gene Expression Omnibus.
+    <https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE15852>
 
-2.  Cancer facts & figures 2025. American Cancer Society. (n.d.).
+2.  ChatGPT. OpenAI, version Jan 2025. Used as a reference for functions
+    such as plot() and to correct syntax errors. Accessed 2025-12-05.
+
+3.  Cancer facts & figures 2025. American Cancer Society. (n.d.).
     <https://www.cancer.org/content/dam/cancer-org/research/cancer-facts-and-statistics/annual-cancer-facts-and-figures/2025/2025-cancer-facts-and-figures-acs.pdf>
 
-3.  Surget, S., Khoury, M. P., & Bourdon, J. C. (2013). Uncovering the
+4.  Surget, S., Khoury, M. P., & Bourdon, J. C. (2013). Uncovering the
     role of p53 splice variants in human malignancy: a clinical
     perspective. OncoTargets and therapy, 7, 57–68.
     <https://doi.org/10.2147/OTT.S53876>
